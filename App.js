@@ -12,7 +12,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 // import Icons from "./Icons";
 const Tab = createMaterialBottomTabNavigator();
 
-export default function App() {
+export default function App(props) {
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -46,7 +46,7 @@ export default function App() {
           options={{
             tabBarLabel: 'Settings',
             tabBarIcon: ({ color }) => (
-              <FontAwesome name='gear' color={color} size={26} />
+              <FontAwesome name='check' color={color} size={26} />
             ),
           }}
         />
