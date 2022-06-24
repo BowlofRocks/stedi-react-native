@@ -8,8 +8,23 @@ const sendText= async(phoneNumber)=>{
     headers:{
       'content-type':'application/text'
     }
-  });
+
+  }); 
 }
+
+const getToken = async ({phoneNumber, oneTimePassword}) => {
+  const tokenResponse = await fetch ('https://dev.stedi.me/twofactorlogin',{
+    method:'POST',
+    body:JSON.stringify({oneTimePassword, phoneNumber}),
+    headers: {
+      'content-type':'application/json'
+    }
+  });
+
+  const tokenResponseString = await tokenResponse.text();
+  console.log(tokenResponseString)
+}
+
 
 const Login = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -24,6 +39,16 @@ const Login = () => {
         placeholderTextColor={'#196393'}
         placeholder="123-456-7890"
       />
+      
+      <TouchableOpacity
+      style={styles.button}
+      onPress={()=>{
+      getToken({phoneNumber, oneTimePassword})
+      }}
+      >
+      <Text>Login</Text>
+      </TouchableOpacity>
+      
       <TextInput
         style={styles.input}
         onChangeText={setOneTimePassword}
@@ -39,7 +64,7 @@ const Login = () => {
         sendText(phoneNumber);
       }}
       >
-      <Text>Login</Text>
+      <Text>Get OTP</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
@@ -62,4 +87,5 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Login; 
+
+export default Login;
