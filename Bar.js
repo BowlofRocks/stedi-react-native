@@ -7,7 +7,8 @@ function Bar(props) {
     return(
         <View style={styles.bar}>
             <AppName />
-            <Setting loggedInUser = {props.loggedInUser}/>  
+            <Setting loggedInUser={props.loggedInUser}/> 
+            
         </View>
     )
   }
@@ -27,4 +28,4 @@ const styles = StyleSheet.create({
         paddingRight: 10,
         
       },
-})
+});
