@@ -8,7 +8,7 @@ import email from './Login.js';
 const Home = () => {
   return (
     <View>
-      <Bar loggedInUser="Josh"/>
+      <Bar loggedInUser="Paul Amago"/>
       <Text>Email: {email} </Text>
       <Icons />
     </View>
