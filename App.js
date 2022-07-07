@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -14,7 +14,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 const Tab = createMaterialBottomTabNavigator();
 
 export default function App() {
-const [userLoggedIn, setUserLoggedIn] = useState(false);
+const [userLoggedIn, setUserLoggedIn, setUserName] = useState(false);
 
 if (userLoggedIn){
   return(
@@ -22,11 +22,12 @@ if (userLoggedIn){
       <Tab.Navigator
         initialRouteName='Home'
         activeColor='white'
-        barStyle={{ backgroundColor: 'green' }}
-      >
-        <Tab.Screen
+        barStyle={{ backgroundColor: 'green'}}
+        >
+          <Tab.Screen
           name='Home'
-          component={Home}
+          children={() => <Home loggedInUser='Jimbo_New@gmail.com'/>}
+          //component={Home}
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({ color }) => (
@@ -34,6 +35,7 @@ if (userLoggedIn){
             ),
           }}
         />
+
         <Tab.Screen
           name='Step Counter'
           component={Counter}
@@ -54,16 +56,19 @@ if (userLoggedIn){
             ),
           }}
         />
+
+
+
       </Tab.Navigator>
     </NavigationContainer>
   )
 } else {
 
   return(
-    <Login setUserLoggedIn={setUserLoggedIn}/>
+    <Login setUserLoggedIn={setUserLoggedIn} setUserName={setUserName}/>
   )
-
 }
+
 }
 
 
