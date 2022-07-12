@@ -8,9 +8,8 @@ function Bar(props) {
         <View style={styles.bar}>
             <AppName />
             <Setting loggedInUser={props.loggedInUser}/> 
-            
         </View>
-    )
+    );
   }
 
 export default Bar

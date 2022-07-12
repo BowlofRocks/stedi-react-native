@@ -51,6 +51,7 @@ const getToken = async ({phoneNumber, oneTimePassword, setUserLoggedIn, setUserN
   const usernameRespose = await fetch("https://dev.stedi.me/validate/" + tokenResponseString)
   const username = await usernameRespose.text();
   console.log(username)
+  setUserName(username)
 
 
 }
@@ -90,7 +91,7 @@ const Login = (props) => {
       style={styles.button}
      
       onPress={()=>{
-        getToken({phoneNumber, oneTimePassword, setUserLoggedIn:props.setUserLoggedIn});        
+        getToken({phoneNumber, oneTimePassword, setUserLoggedIn:props.setUserLoggedIn, setUserName:props.setUserName});        
       }}
 
       >
