@@ -8,7 +8,7 @@ const Home = (props) => {
   return (
     <View>
       <Bar loggedInUser={props.loggedInUser}/>
-      <Icons />
+      <Icons/>
     </View>
   );
 };
